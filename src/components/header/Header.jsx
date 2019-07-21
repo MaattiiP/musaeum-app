@@ -5,7 +5,7 @@ export default class Header extends Component {
   render() {
     return (
       <div className="navbar">
-        <div class="navbar-brand">
+        <div className="navbar-brand">
           <img src={logo} alt="Logo" className="navbar-item image is-rounded is-64x64" />
           <h1 className="navbar-item">Musaeum</h1>
         </div>
