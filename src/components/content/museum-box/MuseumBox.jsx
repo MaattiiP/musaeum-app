@@ -7,11 +7,14 @@ export default class MuseumBox extends Component {
 
   render() {
     return (
-      <div className="box">
-        <div className="media content">
-          <p className="title is-5 is-spaced is-marginless">{this.props.name}</p>
-        </div>
+      <div className="column is-4">
+        <div className="box">
+          <div className="media-content">
+            <p className="title is-5 is-spaced is-marginless">{this.props.name}</p>
+            <p className="subtitle is-marginless">{this.props.country}</p>
+          </div>
 
+        </div>
       </div>
     )
   }
