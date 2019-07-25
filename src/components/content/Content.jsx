@@ -25,10 +25,16 @@ export default class Content extends Component {
   render() {
     let museumList = this.state.response
     const listOfMuseums = museumList.map((museum) =>
-      <MuseumBox key={museum.id} name={museum.short_name} />
+      <MuseumBox
+        key={museum.id}
+        name={museum.short_name}
+        country={museum.country}
+        city={museum.city}
+
+      />
     );
     return (
-      <div className="section">
+      <div className="columns is-multiline">
         {listOfMuseums}
       </div>
     )
