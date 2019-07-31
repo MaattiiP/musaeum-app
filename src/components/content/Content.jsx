@@ -6,20 +6,22 @@ import MuseumDisplay from './museum-display/MuseumDisplay';
 import ArtifactDisplay from './artifact-display/ArtifactDisplay';
 
 
-export default class Content extends Component {
+class Content extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      activeDisplay: 'museums'
-    }
   }
 
 
+  componentDidUpdate() {
+    console.log(this.props.header.activeView)
+  }
 
   render() {
     let display
-    if (this.state.activeDisplay == 'museums') {
+
+    if (this.props.header.activeView === 'museum'){
+      display = <MuseumDisplay />
+    } else if (this.props.header.activeView === 'artifact'){
       display = <ArtifactDisplay />
     }
 
@@ -31,3 +33,8 @@ export default class Content extends Component {
   }
 };
 
+const mapStateToProps = state => ({
+  header: state.header
+});
+
+export default connect(mapStateToProps)(Content);

@@ -11,7 +11,7 @@ function App() {
         <Header />
       </div>
       <div className="hero-body">
-        <div class="section">
+        <div className="section">
           <Content />
         </div>
       </div>
