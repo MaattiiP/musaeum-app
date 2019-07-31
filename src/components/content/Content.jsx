@@ -11,11 +11,6 @@ class Content extends Component {
     super(props)
   }
 
-
-  componentDidUpdate() {
-    console.log(this.props.header.activeView)
-  }
-
   render() {
     let display
 
