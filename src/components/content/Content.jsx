@@ -1,53 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import api from '../../api/api';
-import { saveMuseums } from "./actions";
 
-import MuseumBox from './museum-box/MuseumBox';
+import MuseumDisplay from './museum-display/MuseumDisplay';
 
 
-class Content extends Component {
+export default class Content extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      response: []
+      activeDisplay: 'museums'
     }
   }
 
-  componentWillMount() {
-    api.getListMuseum().then(
-      response => {
-        this.props.saveMuseums(response.data.results)
-      }
-    )
-  }
 
 
   render() {
-    let museumList = this.props.museums.museumsList
-    const listOfMuseums = museumList.map((museum) =>
-      <MuseumBox
-        key={museum.id}
-        name={museum.short_name}
-        country={museum.country}
-        city={museum.city}
-      />
-    );
+    let display
+    if (this.state.activeDisplay == 'museums') {
+      display = <MuseumDisplay />
+    }
+
     return (
-      <div className="columns is-multiline">
-        {listOfMuseums}
+      <div>
+        {display}
       </div>
     )
   }
 };
 
-const mapStateToProps = state => ({
-  museums: state.museums
-});
-const mapDispatchToProps = dispatch => ({
-  saveMuseums: (payload) => dispatch(saveMuseums(payload))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Content)
