@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 
-import museumsReducer from '../components/content/museum-display/reducers'
+import museumReducer from '../components/content/museum-display/reducers';
+import artifactReducer from '../components/content/artifact-display/reducers';
 
 
 const rootReducer = combineReducers({
-  museums: museumsReducer
+  museums: museumReducer,
+  artifacts : artifactReducer
 })
 
 export default rootReducer;

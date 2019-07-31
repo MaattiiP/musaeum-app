@@ -4,7 +4,7 @@ const initialState = {
   museumsList: []
 }
 
-function museumsReducer(state = initialState, action) {
+function museumReducer(state = initialState, action) {
   switch (action.type) {
     case GET_MUSEUMS:
       let museumsList = action.museums;
@@ -16,4 +16,4 @@ function museumsReducer(state = initialState, action) {
   }
 }
 
-export default museumsReducer;
+export default museumReducer;
