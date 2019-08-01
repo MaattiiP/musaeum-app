@@ -1,4 +1,4 @@
-import { ARTIFACTS_VIEW, MUSEUMS_VIEW } from './actionsTypes';
+import { ARTIFACTS_VIEW, MUSEUMS_VIEW, LOGIN_VIEW } from './actionsTypes';
 
 export function switchToArtifactView() {
   return {
@@ -9,5 +9,11 @@ export function switchToArtifactView() {
 export function switchToMuseumView() {
   return {
     type: MUSEUMS_VIEW
+  }
+}
+
+export function switchToLoginView() {
+  return {
+    type: LOGIN_VIEW
   }
 }

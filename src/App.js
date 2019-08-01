@@ -8,10 +8,10 @@ import Login from './components/user/Login';
 function App() {
   return (
     <div className="App hero">
+      <Login />
       <div className="hero-head">
         <Header />
       </div>
-      <Login />
       <div className="hero-body">
         <div className="section">
           <Content />

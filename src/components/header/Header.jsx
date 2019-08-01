@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-
 import { connect } from 'react-redux';
-
-import {switchToArtifactView, switchToMuseumView} from './actions'
+import {switchToArtifactView, switchToMuseumView, switchToLoginView} from './actions'
 
 import logo from './musaeum-logo.svg';
 import './Header.scss';
@@ -10,7 +8,7 @@ import './Header.scss';
 
 class Header extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -31,9 +29,9 @@ class Header extends Component {
                 <input type="text" placeholder="Buscador" className="button is-light"/>  
               </div>
               <div className="navbar-item">
-                <p className="button is-primary" >
+                <button className="button is-primary" onClick={this.props.loginView}>
                   <strong>Log in</strong>
-                </p>
+                </button>
               </div>
             </div>
           </div>
@@ -47,8 +45,8 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   artifactView: () => dispatch(switchToArtifactView()),
-  museumView: () => dispatch(switchToMuseumView())
+  museumView: () => dispatch(switchToMuseumView()),
+  loginView: () => dispatch(switchToLoginView())
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
