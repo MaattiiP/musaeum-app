@@ -7,13 +7,21 @@ const ROOT_URL = 'http://localhost:8000/api/v1/';
 const MUSEUM_LIST_URL = `${ROOT_URL}museum/`;
 const ARTIFACT_LIST_URL = `${ROOT_URL}artifact/`;
 
-export default {
+// Auth urls
+const LOGIN_USER_URL = `${ROOT_URL}rest-auth/login/`
 
-    getListMuseum() {
-        return axios.get(MUSEUM_LIST_URL)
-    },
-    getListArtifact() {
-        return axios.get(ARTIFACT_LIST_URL)
-    }
+export default {
+  getListMuseum() {
+    return axios.get(MUSEUM_LIST_URL)
+  },
+  getListArtifact() {
+    return axios.get(ARTIFACT_LIST_URL)
+  },
+  postLoginCredentials(username, password) {
+    return axios.post(LOGIN_USER_URL, {
+      username: username,
+      password: password
+    })
+  }
 
 }

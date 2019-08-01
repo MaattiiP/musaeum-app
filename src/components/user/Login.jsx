@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {switchToMuseumView} from '../header/actions';
+import api from '../../api/api';
 
 const ACTIVE_MODAL = "modal is-active";
 const INACTIVE_MODAL = "modal";
@@ -25,8 +26,10 @@ class Login extends Component {
     this.setState({password: event.target.value})
   }
   handleSubmit() {
-    console.log(this.state.username)
-    console.log(this.state.password)
+    api.postLoginCredentials(this.state.username, this.state.password).then(
+      response => console.log(response)
+    )
+
   }
 
   render() {
@@ -47,7 +50,7 @@ class Login extends Component {
               </div>
               <label className="label">Password</label>
               <div className="control">
-                <input className="input is-success" type="text" placeholder="****" value="" onChange={this.passwordInput}/>
+                <input className="input is-success" type="text" placeholder="****" value={this.state.password} onChange={this.passwordInput}/>
               </div>
           </div>
           <button className="button is-primary" onClick={this.handleSubmit}>Log in</button>
