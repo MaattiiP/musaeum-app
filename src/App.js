@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.sass';
+import React from "react";
+import "./App.sass";
 
-import Header from './components/header/Header';
-import Content from './components/content/Content';
-import Login from './components/user/Login';
+import Header from "./components/header/Header";
+import Content from "./components/content/Content";
+import Login from "./components/user/Login";
 
 function App() {
   return (

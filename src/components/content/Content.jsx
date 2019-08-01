@@ -1,32 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-
-import MuseumDisplay from './museum-display/MuseumDisplay';
-import ArtifactDisplay from './artifact-display/ArtifactDisplay';
-
+import MuseumDisplay from "./museum-display/MuseumDisplay";
+import ArtifactDisplay from "./artifact-display/ArtifactDisplay";
 
 class Content extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
-    let display
+    let display;
 
-    if (this.props.header.activeView === 'museum'){
-      display = <MuseumDisplay />
-    } else if (this.props.header.activeView === 'artifact'){
-      display = <ArtifactDisplay />
+    if (this.props.header.activeView === "museum") {
+      display = <MuseumDisplay />;
+    } else if (this.props.header.activeView === "artifact") {
+      display = <ArtifactDisplay />;
     }
 
-    return (
-      <div>
-        {display}
-      </div>
-    )
+    return <div>{display}</div>;
   }
-};
+}
 
 const mapStateToProps = state => ({
   header: state.header

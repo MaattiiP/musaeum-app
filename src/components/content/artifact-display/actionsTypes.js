@@ -1,1 +1,1 @@
-export const GET_ARTIFACTS = "GET_ARTIFACTS"
+export const GET_ARTIFACTS = "GET_ARTIFACTS";

@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import {switchToArtifactView, switchToMuseumView, switchToLoginView} from './actions'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  switchToArtifactView,
+  switchToMuseumView,
+  switchToLoginView
+} from "./actions";
 
-import logo from './musaeum-logo.svg';
-import './Header.scss';
-
+import logo from "./musaeum-logo.svg";
+import "./Header.scss";
 
 class Header extends Component {
   constructor(props) {
@@ -15,28 +18,43 @@ class Header extends Component {
     return (
       <div className="navbar">
         <div className="navbar-brand">
-          <img src={logo} alt="Logo" className="navbar-item image is-rounded is-64x64" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="navbar-item image is-rounded is-64x64"
+          />
           <h1 className="navbar-item">Musaeum</h1>
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-start">
+            <a className="navbar-item" onClick={this.props.museumView}>
+              Museos
+            </a>
+            <a className="navbar-item" onClick={this.props.artifactView}>
+              Artefacto
+            </a>
+            <p className="navbar-item">Monumentos</p>
           </div>
-          <div className="navbar-menu">
-            <div className="navbar-start">
-              <a className="navbar-item" onClick={this.props.museumView}>Museos</a>
-              <a className="navbar-item" onClick={this.props.artifactView}>Artefacto</a>
-              <p className="navbar-item">Monumentos</p>
-            </div>
-            <div className="navbar-end" id="navbarEndLogIn">
+          <div className="navbar-end" id="navbarEndLogIn">
             <div className="navbar-item" id="navbarEndSearchBox">
-                <input type="text" placeholder="Buscador" className="button is-light"/>  
-              </div>
-              <div className="navbar-item">
-                <button className="button is-primary" onClick={this.props.loginView}>
-                  <strong>Log in</strong>
-                </button>
-              </div>
+              <input
+                type="text"
+                placeholder="Buscador"
+                className="button is-light"
+              />
+            </div>
+            <div className="navbar-item">
+              <button
+                className="button is-primary"
+                onClick={this.props.loginView}
+              >
+                <strong>Log in</strong>
+              </button>
             </div>
           </div>
+        </div>
       </div>
-    )
+    );
   }
 }
 
@@ -47,6 +65,9 @@ const mapDispatchToProps = dispatch => ({
   artifactView: () => dispatch(switchToArtifactView()),
   museumView: () => dispatch(switchToMuseumView()),
   loginView: () => dispatch(switchToLoginView())
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

@@ -1,21 +1,21 @@
-import {ARTIFACTS_VIEW} from './actionsTypes';
-import {MUSEUMS_VIEW} from './actionsTypes';
-import {LOGIN_VIEW} from './actionsTypes';
+import { ARTIFACTS_VIEW } from "./actionsTypes";
+import { MUSEUMS_VIEW } from "./actionsTypes";
+import { LOGIN_VIEW } from "./actionsTypes";
 
 const initialState = {
-  activeView: 'museum'
-}
+  activeView: "museum"
+};
 
 function headerReducer(state = initialState, action) {
   switch (action.type) {
     case ARTIFACTS_VIEW:
-      return {activeView: 'artifact'}
+      return { activeView: "artifact" };
     case MUSEUMS_VIEW:
-      return {activeView: 'museum'}
+      return { activeView: "museum" };
     case LOGIN_VIEW:
-      return {activeView: 'login'}
+      return { activeView: "login" };
     default:
-      return state
+      return state;
   }
 }
 
