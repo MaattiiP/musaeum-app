@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {switchToMuseumView} from '../header/actions'
+import {switchToMuseumView} from '../header/actions';
 
 const ACTIVE_MODAL = "modal is-active";
 const INACTIVE_MODAL = "modal";
@@ -8,6 +8,25 @@ const INACTIVE_MODAL = "modal";
 class Login extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      username: "",
+      password: ""
+    }
+    this.usernameInput = this.usernameInput.bind(this);
+    this.passwordInput = this.passwordInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  usernameInput(event) {
+    this.setState({username: event.target.value})
+  }
+  passwordInput(event) {
+    this.setState({password: event.target.value})
+  }
+  handleSubmit() {
+    console.log(this.state.username)
+    console.log(this.state.password)
   }
 
   render() {
@@ -24,13 +43,14 @@ class Login extends Component {
           <div className="field">
               <label className="label">Username</label>
               <div className="control">
-                <input className="input is-success" type="text" placeholder="You" value="" />
+                <input className="input" type="text" placeholder="You" value={this.state.username} onChange={this.usernameInput}/>
               </div>
               <label className="label">Password</label>
               <div className="control">
-                <input className="input is-success" type="text" placeholder="****" value="" />
+                <input className="input is-success" type="text" placeholder="****" value="" onChange={this.passwordInput}/>
               </div>
           </div>
+          <button className="button is-primary" onClick={this.handleSubmit}>Log in</button>
         </div>
         <button className="modal-close is-large" aria-label="close" onClick={this.props.museumView}></button>
       </div>
