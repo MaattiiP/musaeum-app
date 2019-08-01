@@ -3,6 +3,7 @@ import './App.sass';
 
 import Header from './components/header/Header';
 import Content from './components/content/Content';
+import Login from './components/user/Login';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className="hero-head">
         <Header />
       </div>
+      <Login />
       <div className="hero-body">
         <div className="section">
           <Content />
