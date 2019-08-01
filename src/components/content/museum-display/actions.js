@@ -1,4 +1,4 @@
-import { GET_MUSEUMS  }from './actionsTypes';
+import { GET_MUSEUMS } from './actionsTypes';
 
 
 export function saveMuseums(payload) {

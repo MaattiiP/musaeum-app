@@ -1,15 +1,15 @@
-import {GET_MUSEUMS} from './actionsTypes';
+import {GET_ARTIFACTS} from './actionsTypes';
 
 const initialState = {
-  museumsList: []
+  artifactsList: []
 }
 
 function museumsReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_MUSEUMS:
-      let museumsList = action.museums;
+    case GET_ARTIFACTS:
+      let artifactsList = action.artifact;
       return {
-        museumsList: museumsList,
+        artifactsList: artifactsList,
       }
     default:
       return state;
