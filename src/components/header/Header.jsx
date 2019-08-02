@@ -5,15 +5,12 @@ import {
   switchToMuseumView,
   switchToLoginView
 } from "./actions";
+import Login from "../user/Login";
 
 import logo from "./musaeum-logo.svg";
 import "./Header.scss";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="navbar">
@@ -44,12 +41,7 @@ class Header extends Component {
               />
             </div>
             <div className="navbar-item">
-              <button
-                className="button is-primary"
-                onClick={this.props.loginView}
-              >
-                <strong>Log in</strong>
-              </button>
+              <Login />
             </div>
           </div>
         </div>
