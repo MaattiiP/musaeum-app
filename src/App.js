@@ -8,7 +8,7 @@ import Login from "./components/user/Login";
 
 function App() {
   return (
-    <div className="App hero">
+    <div className="App hero is-fullheight">
       <Login />
       <div className="hero-head">
         <Header />
