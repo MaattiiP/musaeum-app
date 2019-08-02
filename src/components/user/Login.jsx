@@ -47,6 +47,7 @@ class Login extends Component {
     } else {
       status = INACTIVE_DROPDOWN;
     }
+
     return (
       <div className={status}>
         <div className="dropdown-trigger">
@@ -60,8 +61,8 @@ class Login extends Component {
               <label className="label">Username</label>
               <div className="control">
                 <input
-                  className="input"
-                  type="text"
+                  className="input is-small"
+                  type="email"
                   placeholder="You"
                   value={this.state.username}
                   onChange={this.usernameInput}
@@ -70,8 +71,8 @@ class Login extends Component {
               <label className="label">Password</label>
               <div className="control">
                 <input
-                  className="input is-success"
-                  type="text"
+                  className="input is-small"
+                  type="password"
                   placeholder="****"
                   value={this.state.password}
                   onChange={this.passwordInput}
@@ -90,11 +91,9 @@ class Login extends Component {
 };
 
 const mapStateToProps = state => ({
-  header: state.header,
   user: state.user
 });
 const mapDispatchToProps = dispatch => ({
-  museumView: () => dispatch(switchToMuseumView()),
   saveUser: (payload) => dispatch(saveUser(payload))
 });
 
