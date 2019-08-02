@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import api from "../../api/api"
+import api from "../../api/api";
+import NewArtifact from "./new-artifact/NewArtifact";
 
 class Footer extends Component {
   constructor(props) {
@@ -15,13 +16,9 @@ class Footer extends Component {
 
   render() {
     return (
-      <nav className="tabs is-boxed is-fullwidth">
-       <div className="container">
-         <ul>
-           <li className="subtitle is-active"><a onClick={this.submit} href={null}>+</a></li>
-         </ul>
-       </div>
-     </nav>
+      <div className="container has-text-centered">
+        <NewArtifact />
+      </div>
     )
   }
 }

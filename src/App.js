@@ -7,7 +7,7 @@ import Footer from "./components/footer/Footer"
 
 function App() {
   return (
-    <div className="App hero is-fullheight">
+    <div className="App hero is-fullwidth is-fullheight">
       <div className="hero-head">
         <Header />
       </div>
