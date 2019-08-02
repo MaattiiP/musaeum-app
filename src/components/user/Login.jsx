@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { switchToMuseumView } from "../header/actions";
+import { saveUser } from "./actions";
 import api from "../../api/api";
 
 const ACTIVE_MODAL = "modal is-active";
@@ -28,7 +29,7 @@ class Login extends Component {
   handleSubmit() {
     api
       .postLoginCredentials(this.state.username, this.state.password)
-      .then(response => console.log(response));
+      .then(response => this.props.saveUser(response.data));
   }
 
   render() {
@@ -76,13 +77,14 @@ class Login extends Component {
       </div>
     );
   }
-}
+};
 
 const mapStateToProps = state => ({
   header: state.header
 });
 const mapDispatchToProps = dispatch => ({
-  museumView: () => dispatch(switchToMuseumView())
+  museumView: () => dispatch(switchToMuseumView()),
+  saveUser: (payload) => dispatch(saveUser(payload))
 });
 
 export default connect(
