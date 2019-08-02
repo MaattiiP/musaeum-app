@@ -80,7 +80,8 @@ class Login extends Component {
 };
 
 const mapStateToProps = state => ({
-  header: state.header
+  header: state.header,
+  user: state.user
 });
 const mapDispatchToProps = dispatch => ({
   museumView: () => dispatch(switchToMuseumView()),

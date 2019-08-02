@@ -4,6 +4,7 @@ import axios from 'axios'
 const ROOT_URL = 'http://localhost:8000/api/v1/';
 
 // Museum and artifact urls
+// GET 
 const MUSEUM_LIST_URL = `${ROOT_URL}museum/`;
 const ARTIFACT_LIST_URL = `${ROOT_URL}artifact/`;
 
@@ -22,6 +23,10 @@ export default {
       username: username,
       password: password
     })
-  }
-
+  },
+  postArtifact(token) {
+    return axios
+      .post(
+      ARTIFACT_LIST_URL, 
+  )}
 }
