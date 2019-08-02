@@ -4,12 +4,10 @@ import "./App.sass";
 import Header from "./components/header/Header";
 import Content from "./components/content/Content";
 import Footer from "./components/footer/Footer"
-import Login from "./components/user/Login";
 
 function App() {
   return (
     <div className="App hero is-fullheight">
-      <Login />
       <div className="hero-head">
         <Header />
       </div>

@@ -2,7 +2,7 @@ import { SAVE_USER } from './actionsTypes';
 
 const initialState = {
   token: "",
-  userData: {}
+  userData: null
 };
 
 function userReducer(state = initialState, action) {

@@ -4,22 +4,30 @@ import { switchToMuseumView } from "../header/actions";
 import { saveUser } from "./actions";
 import api from "../../api/api";
 
-const ACTIVE_MODAL = "modal is-active";
-const INACTIVE_MODAL = "modal";
+const ACTIVE_DROPDOWN = "dropdown is-right is-active";
+const INACTIVE_DROPDOWN = "dropdown";
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      active: false,
       username: "",
       password: ""
     };
     this.usernameInput = this.usernameInput.bind(this);
     this.passwordInput = this.passwordInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.openMenu = this.openMenu.bind(this);
   }
 
+  openMenu() {
+    this.setState({
+      active: !this.state.active
+    })
+
+  }
   usernameInput(event) {
     this.setState({ username: event.target.value });
   }
@@ -34,57 +42,58 @@ class Login extends Component {
 
   render() {
     let status;
-    if (this.props.header.activeView === "login") {
-      status = ACTIVE_MODAL;
+    if (this.state.active === true) {
+      status = ACTIVE_DROPDOWN;
     } else {
-      status = INACTIVE_MODAL;
+      status = INACTIVE_DROPDOWN;
     }
+
     return (
       <div className={status}>
-        <div className="modal-background" />
-        <div className="modal-content">
-          <div className="field">
-            <label className="label">Username</label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                placeholder="You"
-                value={this.state.username}
-                onChange={this.usernameInput}
-              />
-            </div>
-            <label className="label">Password</label>
-            <div className="control">
-              <input
-                className="input is-success"
-                type="text"
-                placeholder="****"
-                value={this.state.password}
-                onChange={this.passwordInput}
-              />
-            </div>
-          </div>
-          <button className="button is-primary" onClick={this.handleSubmit}>
-            Log in
+        <div className="dropdown-trigger">
+          <button className="button is-dark" onClick={this.openMenu}>
+            Log In
           </button>
         </div>
-        <button
-          className="modal-close is-large"
-          aria-label="close"
-          onClick={this.props.museumView}
-        />
+        <div className="dropdown-menu" id="dropdown-menu2" role="menu">
+          <div className="dropdown-content">
+            <div className="field">
+              <label className="label">Username</label>
+              <div className="control">
+                <input
+                  className="input is-small"
+                  type="email"
+                  placeholder="You"
+                  value={this.state.username}
+                  onChange={this.usernameInput}
+                />
+              </div>
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  className="input is-small"
+                  type="password"
+                  placeholder="****"
+                  value={this.state.password}
+                  onChange={this.passwordInput}
+                />
+              </div>
+            </div>
+            <button className="button is-primary" onClick={this.handleSubmit}>
+              Log in
+            </button>
+
+          </div>
+        </div>
       </div>
     );
   }
 };
 
 const mapStateToProps = state => ({
-  header: state.header,
   user: state.user
 });
 const mapDispatchToProps = dispatch => ({
-  museumView: () => dispatch(switchToMuseumView()),
   saveUser: (payload) => dispatch(saveUser(payload))
 });
 

@@ -5,16 +5,19 @@ import {
   switchToMuseumView,
   switchToLoginView
 } from "./actions";
+import Login from "../user/Login";
 
 import logo from "./musaeum-logo.svg";
 import "./Header.scss";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
+    let userStatus;
+    if (this.props.user === null) {
+      userStatus = <Login />
+    } else {
+      userStatus = <p className="subtitle">{this.props.user.username}</p>
+    }
     return (
       <div className="navbar">
         <div className="navbar-brand">
@@ -44,12 +47,7 @@ class Header extends Component {
               />
             </div>
             <div className="navbar-item">
-              <button
-                className="button is-primary"
-                onClick={this.props.loginView}
-              >
-                <strong>Log in</strong>
-              </button>
+              {userStatus}
             </div>
           </div>
         </div>
@@ -59,7 +57,8 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  header: state.header
+  header: state.header,
+  user: state.user.userData
 });
 const mapDispatchToProps = dispatch => ({
   artifactView: () => dispatch(switchToArtifactView()),
