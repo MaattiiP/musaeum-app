@@ -1,30 +1,25 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import api from "../../api/api";
 import NewArtifact from "./new-artifact/NewArtifact";
+import { connect } from 'react-redux';
 
 class Footer extends Component {
-  constructor(props) {
-    super(props)
-    this.submit = this.submit.bind(this)
-  }
-
-  submit() {
-    api.postArtifact(this.props.user.token)
-      .then(response => console.log(response))
-  }
-
   render() {
-    return (
-      <div className="container has-text-centered">
-        <NewArtifact />
-      </div>
-    )
+    if (this.props.view === 'artifact') {
+        return (
+          <div className="container has-text-centered">
+            <NewArtifact />
+          </div>
+        )
+    } else {
+      return null
+    }
+
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.user
-});
+  view: state.header.activeView
+})
 
-export default connect(mapStateToProps)(Footer);
+
+export default connect(mapStateToProps)(Footer)
