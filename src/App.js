@@ -1,12 +1,13 @@
-import React from 'react';
-import './App.sass';
+import React from "react";
+import "./App.sass";
 
-import Header from './components/header/Header';
-import Content from './components/content/Content';
+import Header from "./components/header/Header";
+import Content from "./components/content/Content";
+import Footer from "./components/footer/Footer"
 
 function App() {
   return (
-    <div className="App hero">
+    <div className="App hero is-fullheight">
       <div className="hero-head">
         <Header />
       </div>
@@ -14,6 +15,9 @@ function App() {
         <div className="section">
           <Content />
         </div>
+      </div>
+      <div className="hero-foot">
+        <Footer />
       </div>
     </div>
   );

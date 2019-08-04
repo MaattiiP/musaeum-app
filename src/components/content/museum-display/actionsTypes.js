@@ -1,1 +1,1 @@
-export const GET_MUSEUMS = "GET_MUSEUMS"
+export const GET_MUSEUMS = "GET_MUSEUMS";
