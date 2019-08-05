@@ -5,6 +5,7 @@ import api from '../../../api/api'
 const ACTIVE = "dropdown is-up is-active";
 const NO_ACTIVE = "dropdown";
 
+
 class NewArtifact extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +21,8 @@ class NewArtifact extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.submitArtifact = this.submitArtifact.bind(this)
+    this.submitArtifact = this.submitArtifact.bind(this);
+    this.handleMuseumChange = this.handleMuseumChange.bind(this);
   }
   show() {
     this.setState({
@@ -40,7 +42,11 @@ class NewArtifact extends Component {
   handleDescriptionChange(e) {
     this.setState({
       artifactDescription: e.target.value
-
+    })
+  }
+  handleMuseumChange(e) {
+    this.setState({
+      articactMuseum: Number(e.target.value)
     })
   }
   submitArtifact() {
@@ -48,17 +54,21 @@ class NewArtifact extends Component {
     data_form.append('name', this.state.artifactName);
     data_form.append('description', this.state.artifactDescription);
     data_form.append('picture', this.state.artifactPicture);
-    data_form.append('registrator', this.props.userData.pk)
-    data_form.append('museum', 1);
+    data_form.append('registrator', this.props.userData.pk);
+    data_form.append('museum', this.state.articactMuseum);
     api.postArtifact(
       this.props.userToken,
       this.props.userData.pk,
       data_form
-    ).then(response => console.log(response))
-
+    )
   }
 
   render() {
+    const museumItems = this.props.museums.museumsList.map((museum) =>
+      <li className="dropdown-item" key={museum.id}>{museum.short_name}</li>
+    );
+    let museumDropdown;
+    (this.state.museumDropdown) ? museumDropdown = ACTIVE : museumDropdown = NO_ACTIVE;
     let status;
     (this.state.active) ? status = ACTIVE : status = NO_ACTIVE;
     return (
@@ -71,15 +81,12 @@ class NewArtifact extends Component {
           <div className="dropdown-menu">
           <div className="dropdown-content">
             <div className="dropdown-item">
-
               <div className="field">
-                <label className="label">Name</label>
+                <label className="label">Nombre</label>
                 <div className="control">
                   <input className="input" type="text" onChange={this.handleNameChange}/>
                 </div>
               </div>
-
-
               <div class="field">
                 <div class="file is-centered is-boxed is-success has-name">
                   <label class="file-label">
@@ -97,16 +104,21 @@ class NewArtifact extends Component {
                   </label>
                 </div>
               </div>
-
               <div class="field">
-                <label className="label">Description</label>
+                <label className="label">Descripcion</label>
                 <div class="control">
                   <textarea class="textarea is-primary" onChange={this.handleDescriptionChange} />
                 </div>
               </div>
-
-              <button className="button is-medium is-primary" onClick={this.submitArtifact}>Send</button>
-
+              <div className="field">
+                <label className="label">Museo</label>
+                <div className="control">
+                  <input className="input" type="text" onChange={this.handleMuseumChange}/>
+                </div>
+              </div>
+              <button className="button is-medium is-primary" onClick={this.submitArtifact}>
+                Guardar artefacto
+              </button>
             </div>
           </div>
         </div>
@@ -117,7 +129,8 @@ class NewArtifact extends Component {
 
 const mapStateToProps = state => ({
   userToken: state.user.token,
-  userData: state.user.userData
+  userData: state.user.userData,
+  museums: state.museums
 });
 
 export default connect(mapStateToProps)(NewArtifact);
