@@ -25,11 +25,18 @@ export default {
       password: password
     })
   },
-  postArtifact(token, data) {
-    const axiosInstance = axios.create({
-      baseURL: MUSEUM_URL,
-      headers: { Authorization: `JWT ${token}` }
+  postArtifact(token, userPk, data) {
+    const axiosInstanceArtifact = axios.create({
+      baseURL: ARTIFACT_URL,
+      headers: {
+        Authorization: `JWT ${token}`,
+        'content-type': 'multipart/form-data' 
+      }
     });
-    return axiosInstance({method: "post", url: MUSEUM_URL, data: data})
+    return axiosInstanceArtifact({
+      method: "post",
+      url: ARTIFACT_URL,
+      data: data
+    })
   }
 }

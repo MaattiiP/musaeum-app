@@ -5,16 +5,12 @@ import MuseumDisplay from "./museum-display/MuseumDisplay";
 import ArtifactDisplay from "./artifact-display/ArtifactDisplay";
 
 class Content extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let display;
 
-    if (this.props.header.activeView === "museum") {
+    if (this.props.view === "museum") {
       display = <MuseumDisplay />;
-    } else if (this.props.header.activeView === "artifact") {
+    } else if (this.props.view === "artifact") {
       display = <ArtifactDisplay />;
     }
 
@@ -23,7 +19,7 @@ class Content extends Component {
 }
 
 const mapStateToProps = state => ({
-  header: state.header
+  view: state.header.activeView
 });
 
 export default connect(mapStateToProps)(Content);
