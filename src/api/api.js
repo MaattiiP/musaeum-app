@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 // Django rest api url in localhost
-const ROOT_URL = 'http://srvaldivia.me:8000/api/v1/';
+const ROOT_URL = 'http://localhost:8000/api/v1/';
 
 // Museum and artifact urls
 // GET 
@@ -26,14 +26,14 @@ export default {
     })
   },
   postArtifact(token, userPk, data) {
-    const axiosInstance = axios.create({
+    const axiosInstanceArtifact = axios.create({
       baseURL: ARTIFACT_URL,
       headers: {
         Authorization: `JWT ${token}`,
         'content-type': 'multipart/form-data' 
       }
     });
-    return axiosInstance({
+    return axiosInstanceArtifact({
       method: "post",
       url: ARTIFACT_URL,
       data: data
