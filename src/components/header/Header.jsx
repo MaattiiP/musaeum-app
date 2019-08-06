@@ -38,12 +38,8 @@ class Header extends Component {
             <p className="navbar-item">Monumentos</p>
           </div>
           <div className="navbar-end" id="navbarEndLogIn">
-            <div className="navbar-item" id="navbarEndSearchBox">
-              <input
-                type="text"
-                placeholder="Buscador"
-                className="button is-light"
-              />
+            <div className="navbar-item">
+              <input type="text" className="input is-medium is-rounded" placeholder="Buscar"/>
             </div>
             <div className="navbar-item">
               {userStatus}
