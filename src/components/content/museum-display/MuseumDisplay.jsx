@@ -14,13 +14,15 @@ class MuseumDisplay extends Component {
   }
 
   render() {
-    let museumList = this.props.museums.museumsList;
-    const listOfMuseums = museumList.map(museum => (
+    const listOfMuseums = this.props.museumsList.map(museum => (
       <MuseumBox
         key={museum.id}
-        name={museum.short_name}
+        shortName={museum.short_name}
+        completeName={museum.complete_name}
         country={museum.country}
         city={museum.city}
+        street={museum.street}
+        logoURL={museum.logo}
       />
     ));
     return <div className="columns is-mobile is-multiline is-vcentered">{listOfMuseums}</div>;
@@ -28,7 +30,7 @@ class MuseumDisplay extends Component {
 }
 
 const mapStateToProps = state => ({
-  museums: state.museums
+  museumsList: state.museums.museums
 });
 const mapDispatchToProps = dispatch => ({
   saveMuseums: payload => dispatch(saveMuseums(payload))
