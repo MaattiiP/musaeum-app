@@ -16,6 +16,7 @@ function App() {
         <div className="section">
           <SignUp />
           <Content />
+        </div>
       </div>
       <div className="hero-foot">
         <Footer />
