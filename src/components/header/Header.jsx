@@ -26,7 +26,6 @@ class Header extends Component {
             alt="Logo"
             className="navbar-item image is-rounded is-64x64"
           />
-          <h1 className="navbar-item">Musaeum</h1>
         </div>
         <div className="navbar-menu">
           <div className="navbar-start">
