@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class MuseumBox extends Component {
   render() {
     return (
-      <div className="column is-one-quarter">
+      <div className="column is-narrow">
         <div className="box">
           <div className="media-content">
             <p className="title is-5 is-spaced is-marginless">

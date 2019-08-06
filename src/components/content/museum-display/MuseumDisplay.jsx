@@ -23,7 +23,7 @@ class MuseumDisplay extends Component {
         city={museum.city}
       />
     ));
-    return <div className="columns is-multiline">{listOfMuseums}</div>;
+    return <div className="columns is-mobile is-multiline is-vcentered">{listOfMuseums}</div>;
   }
 }
 
