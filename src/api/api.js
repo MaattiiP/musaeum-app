@@ -13,6 +13,9 @@ const ARTIFACT_URL = `${ROOT_URL}artifact/`;
 const LOGIN_USER_URL = `${ROOT_URL}rest-auth/login/`;
 const REGISTRATION_USER_URL = `${ROOT_URL}rest-auth/registration/`;
 
+// Star urls
+const STAR_URL = `${ROOT_URL}star/`
+
 export default {
   getListMuseum() {
     return axios.get(MUSEUM_URL)
@@ -54,5 +57,17 @@ export default {
       REGISTRATION_USER_URL,
       data
     )
+  },
+  postStar(comment, userPk, museumPk) {
+    let data = {
+      comment: comment,
+      voter: userPk,
+      museum: museumPk
+    }
+    return axios.post(
+      STAR_URL,
+      data
+    )
+
   }
 }

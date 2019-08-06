@@ -17,6 +17,7 @@ class MuseumDisplay extends Component {
     const listOfMuseums = this.props.museumsList.map(museum => (
       <MuseumBox
         key={museum.id}
+        id={museum.id}
         shortName={museum.short_name}
         completeName={museum.complete_name}
         country={museum.country}
