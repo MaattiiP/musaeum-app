@@ -21,9 +21,10 @@ class NewArtifact extends Component {
     this.show = this.show.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
+    this.deleteImage = this.deleteImage.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.submitArtifact = this.submitArtifact.bind(this);
     this.handleMuseumChange = this.handleMuseumChange.bind(this);
+    this.submitArtifact = this.submitArtifact.bind(this);
   }
   show() {
     this.setState({
@@ -39,6 +40,12 @@ class NewArtifact extends Component {
     this.setState({
       artifactPicture: e.target.files[0],
       artifactPictureUrl: URL.createObjectURL(e.target.files[0])
+    })
+  }
+  deleteImage() {
+    this.setState({
+      artifactPicture: null,
+      artifactPictureUrl: null
     })
   }
   handleDescriptionChange(e) {
@@ -88,9 +95,16 @@ class NewArtifact extends Component {
         </div>
     } else {
       photo =
-        <figure className="image is-64x64">
-          <img src={this.state.artifactPictureUrl} alt="Error" />
-        </figure>
+        <div className="level">
+          <div className="level-left">
+            <figure className="image is-128x128">
+              <img src={this.state.artifactPictureUrl} alt="Error" />
+            </figure>
+          </div>
+          <div className="level-right">
+            <button className="delete is-large" onClick={this.deleteImage}/>
+          </div>
+        </div>
     }
     let status;
     (this.state.active) ? status = ACTIVE : status = NO_ACTIVE;
