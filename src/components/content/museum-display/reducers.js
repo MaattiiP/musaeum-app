@@ -1,15 +1,14 @@
 import { GET_MUSEUMS } from "./actionsTypes";
 
 const initialState = {
-  museumsList: []
+    museums: []
 };
 
 function museumReducer(state = initialState, action) {
   switch (action.type) {
     case GET_MUSEUMS:
-      let museumsList = action.museums;
       return {
-        museumsList: museumsList
+        museums: action.payload
       };
     default:
       return state;

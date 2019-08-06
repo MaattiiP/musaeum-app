@@ -12,9 +12,7 @@ function App() {
         <Header />
       </div>
       <div className="hero-body">
-        <div className="section">
           <Content />
-        </div>
       </div>
       <div className="hero-foot">
         <Footer />

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import MuseumDisplay from "./museum-display/MuseumDisplay";
 import ArtifactDisplay from "./artifact-display/ArtifactDisplay";
 
@@ -14,7 +13,7 @@ class Content extends Component {
       display = <ArtifactDisplay />;
     }
 
-    return <div>{display}</div>;
+    return <div className="section">{display}</div>;
   }
 }
 

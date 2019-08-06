@@ -64,7 +64,7 @@ class NewArtifact extends Component {
   }
 
   render() {
-    const museumItems = this.props.museums.museumsList.map((museum) =>
+    const museumItems = this.props.museums.map((museum) =>
       <li className="dropdown-item" key={museum.id}>{museum.short_name}</li>
     );
     let museumDropdown;
@@ -130,7 +130,7 @@ class NewArtifact extends Component {
 const mapStateToProps = state => ({
   userToken: state.user.token,
   userData: state.user.userData,
-  museums: state.museums
+  museums: state.museums.museums
 });
 
 export default connect(mapStateToProps)(NewArtifact);

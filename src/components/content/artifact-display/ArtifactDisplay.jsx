@@ -7,10 +7,6 @@ import api from "../../../api/api";
 import { saveArtifacts } from "./actions";
 
 class ArtifactDisplay extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     api.getListArtifact().then(response => {
       this.props.saveArtifacts(response.data.results);
@@ -20,9 +16,15 @@ class ArtifactDisplay extends Component {
   render() {
     let artifactList = this.props.artifacts.artifactsList;
     const artifactBoxes = artifactList.map(artifact => (
-      <ArtifactBox key={artifact.id} name={artifact.name} />
+      <ArtifactBox 
+        key={artifact.id}
+        picture={artifact.picture}
+        name={artifact.name}
+        description={artifact.description}
+        museum={artifact.museum}
+      />
     ));
-    return <div className="columns is-multiline">{artifactBoxes}</div>;
+    return <div className="columns is-mobile is-multiline is-vcentered">{artifactBoxes}</div>;
   }
 }
 
