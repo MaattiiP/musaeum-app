@@ -8,7 +8,6 @@ import {
 import Login from "../user/Login";
 
 import logo from "./musaeum-logo.svg";
-import "./Header.scss";
 
 class Header extends Component {
   render() {
