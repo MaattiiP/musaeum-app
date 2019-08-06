@@ -14,6 +14,7 @@ class NewArtifact extends Component {
 
       artifactName: "",
       artifactPicture: null,
+      artifactPictureUrl: null,
       artifactDescription: "",
       articactMuseum: 1
     }
@@ -36,7 +37,8 @@ class NewArtifact extends Component {
   }
   handleImageChange(e) {
     this.setState({
-      artifactPicture: e.target.files[0]
+      artifactPicture: e.target.files[0],
+      artifactPictureUrl: URL.createObjectURL(e.target.files[0])
     })
   }
   handleDescriptionChange(e) {
@@ -64,11 +66,32 @@ class NewArtifact extends Component {
   }
 
   render() {
-    const museumItems = this.props.museums.map((museum) =>
-      <li className="dropdown-item" key={museum.id}>{museum.short_name}</li>
-    );
-    let museumDropdown;
-    (this.state.museumDropdown) ? museumDropdown = ACTIVE : museumDropdown = NO_ACTIVE;
+    let photo;
+    if (this.state.artifactPicture === null) {
+      photo = 
+        <div className="field">
+          <div className="file is-centered is-boxed is-success has-name">
+            <label className="file-label">
+              <input 
+                className="file-input" 
+                type="file" 
+                name="foto" 
+                accept="image/png, image/jpeg"  onChange={this.handleImageChange} 
+              />
+              <span className="file-cta">
+                <span className="file-label">
+                  Foto
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+    } else {
+      photo =
+        <figure className="image is-64x64">
+          <img src={this.state.artifactPictureUrl} alt="Error" />
+        </figure>
+    }
     let status;
     (this.state.active) ? status = ACTIVE : status = NO_ACTIVE;
     return (
@@ -87,23 +110,7 @@ class NewArtifact extends Component {
                   <input className="input" type="text" onChange={this.handleNameChange}/>
                 </div>
               </div>
-              <div className="field">
-                <div className="file is-centered is-boxed is-success has-name">
-                  <label className="file-label">
-                    <input 
-                      className="file-input" 
-                      type="file" 
-                      name="foto" 
-                      accept="image/png, image/jpeg"  onChange={this.handleImageChange} 
-                    />
-                    <span className="file-cta">
-                      <span className="file-label">
-                        Foto
-                      </span>
-                    </span>
-                  </label>
-                </div>
-              </div>
+              {photo}
               <div className="field">
                 <label className="label">Descripcion</label>
                 <div className="control">
