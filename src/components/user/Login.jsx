@@ -26,7 +26,6 @@ class Login extends Component {
     this.setState({
       active: !this.state.active
     })
-
   }
   usernameInput(event) {
     this.setState({ username: event.target.value });
@@ -56,22 +55,22 @@ class Login extends Component {
           </button>
         </div>
         <div className="dropdown-menu" id="dropdown-menu2" role="menu">
-          <div className="dropdown-content">
+          <div className="dropdown-content is-centered">
             <div className="field">
-              <label className="label">Username</label>
+              <label className="label"> > Username</label>
               <div className="control">
                 <input
-                  className="input is-small"
+                  className="input is-small is-rounded"
                   type="email"
                   placeholder="You"
                   value={this.state.username}
                   onChange={this.usernameInput}
                 />
               </div>
-              <label className="label">Password</label>
+              <label className="label"> > Password</label>
               <div className="control">
                 <input
-                  className="input is-small"
+                  className="input is-small is-rounded"
                   type="password"
                   placeholder="****"
                   value={this.state.password}
@@ -79,10 +78,15 @@ class Login extends Component {
                 />
               </div>
             </div>
-            <button className="button is-primary" onClick={this.handleSubmit}>
-              Log in
-            </button>
-
+            <hr className="dropdown-divider" />
+            <div className="buttons has-addons is-centered">
+              <button className="button is-primary" onClick={this.handleSubmit}>
+                Log in
+              </button>
+              <button className="button is-danger" onClick={this.openMenu}>
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </div>
