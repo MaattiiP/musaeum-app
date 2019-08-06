@@ -7,10 +7,6 @@ import api from "../../../api/api";
 import { saveMuseums } from "./actions";
 
 class MuseumDisplay extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     api.getListMuseum().then(response => {
       this.props.saveMuseums(response.data.results);
