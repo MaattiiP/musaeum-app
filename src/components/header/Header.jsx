@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   switchToArtifactView,
   switchToMuseumView,
-  switchToLoginView
+  switchToSignUpView
 } from "./actions";
 import Login from "../user/Login";
 
@@ -14,7 +14,7 @@ class Header extends Component {
   render() {
     let userStatus;
     if (this.props.user === null) {
-      userStatus = <Login />
+      userStatus = <span> <Login /> <button className="button is-primary" onClick={this.props.signUpView}>Sign Up</button> </span>
     } else {
       userStatus = <p className="subtitle">{this.props.user.username}</p>
     }
@@ -63,7 +63,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   artifactView: () => dispatch(switchToArtifactView()),
   museumView: () => dispatch(switchToMuseumView()),
-  loginView: () => dispatch(switchToLoginView())
+  signUpView: () => dispatch(switchToSignUpView())
 });
 
 export default connect(

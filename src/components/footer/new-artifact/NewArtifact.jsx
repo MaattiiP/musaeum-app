@@ -87,27 +87,27 @@ class NewArtifact extends Component {
                   <input className="input" type="text" onChange={this.handleNameChange}/>
                 </div>
               </div>
-              <div class="field">
-                <div class="file is-centered is-boxed is-success has-name">
-                  <label class="file-label">
+              <div className="field">
+                <div className="file is-centered is-boxed is-success has-name">
+                  <label className="file-label">
                     <input 
-                      class="file-input" 
+                      className="file-input" 
                       type="file" 
                       name="foto" 
                       accept="image/png, image/jpeg"  onChange={this.handleImageChange} 
                     />
-                    <span class="file-cta">
-                      <span class="file-label">
+                    <span className="file-cta">
+                      <span className="file-label">
                         Foto
                       </span>
                     </span>
                   </label>
                 </div>
               </div>
-              <div class="field">
+              <div className="field">
                 <label className="label">Descripcion</label>
-                <div class="control">
-                  <textarea class="textarea is-primary" onChange={this.handleDescriptionChange} />
+                <div className="control">
+                  <textarea className="textarea is-primary" onChange={this.handleDescriptionChange} />
                 </div>
               </div>
               <div className="field">

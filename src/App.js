@@ -4,6 +4,7 @@ import "./App.sass";
 import Header from "./components/header/Header";
 import Content from "./components/content/Content";
 import Footer from "./components/footer/Footer"
+import SignUp from "./components/user/SignUp";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Header />
       </div>
       <div className="hero-body">
+        <div className="section">
+          <SignUp />
           <Content />
       </div>
       <div className="hero-foot">
