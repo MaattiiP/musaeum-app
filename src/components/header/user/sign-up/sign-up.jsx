@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import api from '../../api/api';
+import api from '../../../../api/api';
 import { connect } from 'react-redux';
-import { switchToMuseumView } from '../header/actions'
-import { saveUser } from './actions';
+import { switchToMuseumView } from '../../../header/actions'
+import { saveUser } from '../actions';
 
 const ACTIVE_MODAL = "modal is-active";
 const INACTIVE_MODAL = "modal";
@@ -11,6 +11,7 @@ class SignUp extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      status: false,
       username: "",
       email: "",
       password1: "",
@@ -21,6 +22,12 @@ class SignUp extends Component {
     this.handlePassword1Change = this.handlePassword1Change.bind(this);
     this.handlePassword2Change = this.handlePassword2Change.bind(this);
     this.submitNewUser = this.submitNewUser.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+  toggleModal() {
+    this.setState({
+      status: !this.state.status
+    })
   }
   handleUsernameChange(e) {
     this.setState({
@@ -61,12 +68,14 @@ class SignUp extends Component {
   }
 
   render() {
-    let status;
-    (this.props.activeView === 'signup') ? status = ACTIVE_MODAL : status = INACTIVE_MODAL;
-    return(
-      <div class={status}>
-        <div class="modal-background"></div>
-        <div class="modal-card">
+    let modalStatus;
+    (this.state.status) ? modalStatus = ACTIVE_MODAL : modalStatus = INACTIVE_MODAL;
+    return (
+      <div>
+        <button className="button is-primary" onClick={this.toggleModal}>Sign Up</button>
+        <div className={modalStatus}>
+          <div class="modal-background"></div>
+          <div class="modal-card">
             <div className="modal-card-head">
               <h2 className="subtitle has-text-info">Sign up</h2>
             </div>
@@ -81,16 +90,17 @@ class SignUp extends Component {
               </div>
               <div className="field">
                 <label className="label" >Contraseña</label>
-                <input type="password" placeholder="Password" onChange={this.handlePassword1Change}/>
+                <input type="password" placeholder="Password" onChange={this.handlePassword1Change} />
               </div>
               <div className="field">
                 <label className="label">Confirme contraseña</label>
-                <input type="password" placeholder="Password" onChange={this.handlePassword2Change}/>
+                <input type="password" placeholder="Password" onChange={this.handlePassword2Change} />
               </div>
-          </div>
-          <div class="modal-card-foot">
-            <button class="button is-success" onClick={this.submitNewUser}>Sign Up</button>
-            <button class="button is-danger" onClick={this.props.museumView}>Cancel</button>
+            </div>
+            <div class="modal-card-foot">
+              <button class="button is-success" onClick={this.submitNewUser}>Sign Up</button>
+              <button class="button is-danger" onClick={this.toggleModal}>Cancel</button>
+            </div>
           </div>
         </div>
       </div>
@@ -98,7 +108,6 @@ class SignUp extends Component {
   }
 };
 const mapStateToProps = state => ({
-  activeView: state.header.activeView
 })
 const mapDispatchToProps = dispatch => ({
   museumView: () => dispatch(switchToMuseumView()),

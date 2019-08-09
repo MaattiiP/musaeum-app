@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.sass";
 
-import Header from "./components/header/Header";
-import Content from "./components/content/Content";
-import Footer from "./components/footer/Footer"
-import SignUp from "./components/user/SignUp";
+import Header from "./components/header/header";
+import Content from "./components/view/view";
+import Footer from "./components/footer/footer"
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       </div>
       <div className="hero-body">
         <div className="section">
-          <SignUp />
           <Content />
         </div>
       </div>

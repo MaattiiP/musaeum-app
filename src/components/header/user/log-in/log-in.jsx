@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { switchToMuseumView } from "../header/actions";
-import { saveUser } from "./actions";
-import api from "../../api/api";
+import { saveUser } from "../actions";
+import api from "../../../../api/api";
 
 const ACTIVE_DROPDOWN = "dropdown is-right is-active";
 const INACTIVE_DROPDOWN = "dropdown";

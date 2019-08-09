@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ArtifactModel from "./ArtifactModel";
+import ArtifactModel from "./artifact-modal";
 
 export default class ArtifactBox extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class ArtifactBox extends Component {
   render() {
     return (
       <div className="column is-narrow">
-        <ArtifactModel 
+        <ArtifactModel
           modalStatus={this.state.modalStatus}
           closeCallback={this.showStatus}
           artifactData={this.props}
@@ -25,7 +25,7 @@ export default class ArtifactBox extends Component {
         <div className="box" onClick={this.showStatus}>
           <div className="content has-text-centered">
             <figure className="image is-128x128">
-              <img src={this.props.picture} alt="X"/>
+              <img src={this.props.picture} alt="X" />
             </figure>
             <h1 className="title is-4">{this.props.name}</h1>
           </div>

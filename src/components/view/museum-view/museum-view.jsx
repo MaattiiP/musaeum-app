@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import MuseumBox from "./museum-box/MuseumBox";
+import MuseumBox from "./museum-box/museum-box";
 
 import api from "../../../api/api";
 import { saveMuseums } from "./actions";
