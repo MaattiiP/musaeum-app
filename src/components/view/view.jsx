@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MuseumDisplay from "./museum-view/museum-view";
-import ArtifactDisplay from "./artifact-view/museum-view";
+import ArtifactDisplay from "./artifact-view/artifact-view";
 
 class Content extends Component {
   render() {

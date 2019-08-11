@@ -6,7 +6,7 @@ import MuseumBox from "./museum-box/museum-box";
 import api from "../../../api/api";
 import { saveMuseums } from "./actions";
 
-class MuseumDisplay extends Component {
+class MuseumView extends Component {
   componentWillMount() {
     api.getListMuseum().then(response => {
       this.props.saveMuseums(response.data.results);
@@ -26,7 +26,11 @@ class MuseumDisplay extends Component {
         logoURL={museum.logo}
       />
     ));
-    return <div className="columns is-mobile is-multiline is-vcentered">{listOfMuseums}</div>;
+    return (
+      <div className="columns is-mobile is-multiline is-vcentered">
+        {listOfMuseums}
+      </div>
+    );
   }
 }
 
@@ -40,4 +44,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MuseumDisplay);
+)(MuseumView);

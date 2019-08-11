@@ -1,26 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  switchToArtifactView,
-  switchToMuseumView,
-} from "./actions";
-import Login from "./user/log-in/log-in";
-import SignUp from "./user/sign-up/sign-up";
+import { switchToArtifactView, switchToMuseumView } from "./actions";
+import UserModule from "./user-module/user-module";
 
 import logo from "./musaeum-logo.svg";
 
 class Header extends Component {
   render() {
-    let userStatus;
-    if (this.props.user === null) {
-      userStatus =
-        <span class="buttons">
-          <Login />
-          <SignUp />
-        </span>
-    } else {
-      userStatus = <p className="subtitle">{this.props.user.username}</p>
-    }
     return (
       <div className="navbar">
         <div className="navbar-brand">
@@ -42,10 +28,14 @@ class Header extends Component {
           </div>
           <div className="navbar-end" id="navbarEndLogIn">
             <div className="navbar-item">
-              <input type="text" className="input is-medium is-rounded" placeholder="Buscar" />
+              <input
+                type="text"
+                className="input is-medium is-rounded"
+                placeholder="Buscar"
+              />
             </div>
             <div className="navbar-item">
-              {userStatus}
+              <UserModule />
             </div>
           </div>
         </div>
@@ -60,7 +50,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   artifactView: () => dispatch(switchToArtifactView()),
-  museumView: () => dispatch(switchToMuseumView()),
+  museumView: () => dispatch(switchToMuseumView())
 });
 
 export default connect(

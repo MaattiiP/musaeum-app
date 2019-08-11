@@ -3,7 +3,7 @@ import "./App.sass";
 
 import Header from "./components/header/header";
 import Content from "./components/view/view";
-import Footer from "./components/footer/footer"
+import Footer from "./components/footer/footer";
 
 function App() {
   return (
