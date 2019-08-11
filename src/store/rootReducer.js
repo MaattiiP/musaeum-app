@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import museumReducer from "../components/content/museum-display/reducers";
-import artifactReducer from "../components/content/artifact-display/reducers";
+import museumReducer from "../components/view/museum-view/reducers";
+import artifactReducer from "../components/view/artifact-view/reducers";
 import headerReducer from "../components/header/reducers";
-import userReducer from "../components/user/reducers";
+import userReducer from "../components/header/user/reducers";
 
 const rootReducer = combineReducers({
   museums: museumReducer,

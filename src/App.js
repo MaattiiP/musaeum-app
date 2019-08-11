@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.sass";
 
-import Header from "./components/header/Header";
-import Content from "./components/content/Content";
-import Footer from "./components/footer/Footer"
+import Header from "./components/header/header";
+import Content from "./components/view/view";
+import Footer from "./components/footer/footer"
 
 function App() {
   return (
-    <div className="App hero is-fullheight">
+    <div className="App hero is-fullwidth is-fullheight">
       <div className="hero-head">
         <Header />
       </div>
