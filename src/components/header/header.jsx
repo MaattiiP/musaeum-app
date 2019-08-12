@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { switchToArtifactView, switchToMuseumView } from "./actions";
+import {
+  switchToArtifactView,
+  switchToMuseumView,
+  switchToMonumentView
+} from "./actions";
 import UserModule from "./user-module/user-module";
 
 import logo from "./musaeum-logo.svg";
@@ -24,7 +28,9 @@ class Header extends Component {
             <a className="navbar-item" onClick={this.props.artifactView}>
               Artefacto
             </a>
-            <p className="navbar-item">Monumentos</p>
+            <a className="navbar-item" onClick={this.props.monumentView}>
+              Monumentos
+            </a>
           </div>
           <div className="navbar-end" id="navbarEndLogIn">
             <div className="navbar-item">
@@ -50,7 +56,8 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   artifactView: () => dispatch(switchToArtifactView()),
-  museumView: () => dispatch(switchToMuseumView())
+  museumView: () => dispatch(switchToMuseumView()),
+  monumentView: () => dispatch(switchToMonumentView())
 });
 
 export default connect(

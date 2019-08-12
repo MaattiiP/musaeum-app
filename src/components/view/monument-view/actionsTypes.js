@@ -1,0 +1,1 @@
+export const GET_MONUMENTS = "GET_MONUMENTS";

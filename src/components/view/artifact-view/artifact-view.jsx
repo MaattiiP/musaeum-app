@@ -24,7 +24,11 @@ class ArtifactDisplay extends Component {
         museum={artifact.museum}
       />
     ));
-    return <div className="columns is-mobile is-multiline is-vcentered">{artifactBoxes}</div>;
+    return (
+      <div className="columns is-mobile is-multiline is-vcentered">
+        {artifactBoxes}
+      </div>
+    );
   }
 }
 
