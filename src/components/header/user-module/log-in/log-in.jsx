@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { saveUser } from "../actions";
 import api from "../../../../api/api";
 
-const ACTIVE_DROPDOWN = "dropdown is-right is-active";
+const ACTIVE_DROPDOWN = "dropdown is-active";
 const INACTIVE_DROPDOWN = "dropdown";
 
 class Login extends Component {
@@ -24,7 +24,7 @@ class Login extends Component {
   openMenu() {
     this.setState({
       active: !this.state.active
-    })
+    });
   }
   usernameInput(event) {
     this.setState({ username: event.target.value });
@@ -91,13 +91,13 @@ class Login extends Component {
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = state => ({
   user: state.user
 });
 const mapDispatchToProps = dispatch => ({
-  saveUser: (payload) => dispatch(saveUser(payload))
+  saveUser: payload => dispatch(saveUser(payload))
 });
 
 export default connect(
