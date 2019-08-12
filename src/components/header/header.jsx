@@ -9,8 +9,26 @@ import UserModule from "./user-module/user-module";
 
 import logo from "./musaeum-logo.svg";
 
+const INACTIVE_MOBILE_MENU = "navbar-menu";
+const ACTIVE_MOBILE_MENU = "navbar-menu is-active";
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileMenu: false
+    };
+    this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+  }
+  toggleMobileMenu() {
+    this.setState({
+      mobileMenu: !this.state.mobileMenu
+    });
+  }
   render() {
+    let mobileMenuStatus;
+    this.state.mobileMenu
+      ? (mobileMenuStatus = ACTIVE_MOBILE_MENU)
+      : (mobileMenuStatus = INACTIVE_MOBILE_MENU);
     return (
       <div className="navbar">
         <div className="navbar-brand">
@@ -19,8 +37,13 @@ class Header extends Component {
             alt="Logo"
             className="navbar-item image is-rounded is-64x64"
           />
+          <a className="navbar-burger burger" onClick={this.toggleMobileMenu}>
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </a>
         </div>
-        <div className="navbar-menu">
+        <div className={mobileMenuStatus}>
           <div className="navbar-start">
             <a className="navbar-item" onClick={this.props.museumView}>
               Museos
