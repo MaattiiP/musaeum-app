@@ -52,6 +52,10 @@ class SignUp extends Component {
   }
   handleError(error) {
     this.setState({
+      username: "",
+      email: "",
+      password1: "",
+      password2: "",
       errorMensage: "Nombre de usuario o contraseña equivocados"
     });
   }
@@ -93,6 +97,7 @@ class SignUp extends Component {
                   type="text"
                   placeholder="Your username"
                   onChange={this.handleUsernameChange}
+                  value={this.state.username}
                 />
               </div>
               <div className="field">
@@ -101,6 +106,7 @@ class SignUp extends Component {
                   type="email"
                   placeholder="Your username"
                   onChange={this.handleEmailChange}
+                  value={this.state.email}
                 />
               </div>
               <div className="field">
@@ -109,6 +115,7 @@ class SignUp extends Component {
                   type="password"
                   placeholder="Password"
                   onChange={this.handlePassword1Change}
+                  value={this.state.password1}
                 />
               </div>
               <div className="field">
@@ -117,6 +124,7 @@ class SignUp extends Component {
                   type="password"
                   placeholder="Password"
                   onChange={this.handlePassword2Change}
+                  value={this.state.password2}
                 />
               </div>
             </div>
