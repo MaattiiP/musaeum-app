@@ -30,6 +30,14 @@ export default {
     let searchURL = `${MUSEUM_URL}?search=${param}`;
     return axios.get(searchURL);
   },
+  getSearchListArtifact(param) {
+    let searchURL = `${ARTIFACT_URL}?search=${param}`;
+    return axios.get(searchURL);
+  },
+  getSearchListMonument(param) {
+    let searchURL = `${MONUMENT_URL}?search=${param}`;
+    return axios.get(searchURL);
+  },
   postLoginCredentials(username, password) {
     return axios.post(LOGIN_USER_URL, {
       username: username,
