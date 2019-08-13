@@ -26,6 +26,10 @@ export default {
   getListMonument() {
     return axios.get(MONUMENT_URL);
   },
+  getSearchListMuseum(param) {
+    let searchURL = `${MUSEUM_URL}?search=${param}`;
+    return axios.get(searchURL);
+  },
   postLoginCredentials(username, password) {
     return axios.post(LOGIN_USER_URL, {
       username: username,

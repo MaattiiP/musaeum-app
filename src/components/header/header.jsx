@@ -6,6 +6,7 @@ import {
   switchToMonumentView
 } from "./actions";
 import UserModule from "./user-module/user-module";
+import Search from "./search/search";
 
 import logo from "./musaeum-logo.svg";
 
@@ -30,7 +31,7 @@ class Header extends Component {
       ? (mobileMenuStatus = ACTIVE_MOBILE_MENU)
       : (mobileMenuStatus = INACTIVE_MOBILE_MENU);
     return (
-      <div className="navbar">
+      <div className="navbar is-transparent">
         <div className="navbar-brand">
           <img
             src={logo}
@@ -57,11 +58,7 @@ class Header extends Component {
           </div>
           <div className="navbar-end" id="navbarEndLogIn">
             <div className="navbar-item">
-              <input
-                type="text"
-                className="input is-medium is-rounded"
-                placeholder="Buscar"
-              />
+              <Search />
             </div>
             <div className="navbar-item">
               <UserModule />
@@ -74,7 +71,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  header: state.header,
   user: state.user.userData
 });
 const mapDispatchToProps = dispatch => ({
