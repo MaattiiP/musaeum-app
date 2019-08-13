@@ -15,7 +15,8 @@ class SignUp extends Component {
       username: "",
       email: "",
       password1: "",
-      password2: ""
+      password2: "",
+      errorMensage: ""
     };
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -49,6 +50,11 @@ class SignUp extends Component {
       password2: e.target.value
     });
   }
+  handleError(error) {
+    this.setState({
+      errorMensage: "Nombre de usuario o contraseña equivocados"
+    });
+  }
   submitNewUser() {
     api
       .postUserRegistration(
@@ -59,9 +65,9 @@ class SignUp extends Component {
       )
       .then(response => {
         this.props.saveUser(response.data);
-        this.props.museumView();
+        this.toggleModal();
       })
-      .catch(error => console.log(error));
+      .catch(error => this.handleError(error.response.data));
   }
 
   render() {
@@ -115,6 +121,7 @@ class SignUp extends Component {
               </div>
             </div>
             <div className="modal-card-foot">
+              <h2 className="title is-danger">{this.state.errorMensage}</h2>
               <button
                 className="button is-success"
                 onClick={this.submitNewUser}
