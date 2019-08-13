@@ -6,7 +6,7 @@ export default class ArtifactBox extends Component {
       <div className="column is-narrow">
         <div className="box">
           <div className="content has-text-centered">
-            <figure className="image is-128x128">
+            <figure className="image image is-5by3">
               <img src={this.props.picture} alt="error" />
             </figure>
             <h1 className="title is-4">{this.props.name}</h1>
